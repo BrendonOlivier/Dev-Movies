@@ -3,6 +3,7 @@ import api from "../../services/api"
 import { Background, Info, Poster, Container, ContainerButtons } from './styles'
 import Button from '../../components/Button';
 import Slider from '../../components/Slider';
+import { getImages } from '../../utils/getImagens';
 
 
 function Home() {
@@ -33,7 +34,7 @@ function Home() {
     return (
         <>
             {movie && ( // (funciona como if no react) se existir algum filme, mostro as informações :
-                <Background img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
+                <Background img={getImages(movie.backdrop_path)}>
 
                     <Container>
                         <Info>
@@ -46,7 +47,7 @@ function Home() {
                         </Info>
 
                         <Poster>
-                            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="capa-do-filme" />
+                            <img src={getImages(movie.poster_path)} alt="capa-do-filme" />
                         </Poster>
                     </Container>
 
