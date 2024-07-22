@@ -4,15 +4,17 @@ import { Background, Info, Poster, Container, ContainerButtons } from './styles'
 import Button from '../../components/Button';
 import Slider from '../../components/Slider';
 import { getImages } from '../../utils/getImagens';
+import Modal from '../../components/Modal';
 
 
 function Home() {
+    const [showModal, setShowModal] = useState(false);
     const [movie, setMovie] = useState();
     const [topMovies, setTopMovies] = useState();
     const [topSeries, setTopSeries] = useState();
     const [popularSeries, setPopularSeries] = useState();
     const [topPeople, setTopPeople] = useState();
-    
+
 
     useEffect(() => {
         async function getMovies() {
@@ -64,6 +66,7 @@ function Home() {
         <>
             {movie && ( // (funciona como if no react) se existir algum filme, mostro as informações :
                 <Background img={getImages(movie.backdrop_path)}>
+                    {showModal && <Modal movieId={movie.id} setShowModal={setShowModal} />}
 
                     <Container>
                         <Info>
@@ -71,7 +74,7 @@ function Home() {
                             <p>{movie.overview}</p>
                             <ContainerButtons>
                                 <Button red>Assista Agora</Button>
-                                <Button>Assista o Trailer</Button>
+                                <Button onClick={() => setShowModal(true)}>Assista o Trailer</Button>
                             </ContainerButtons>
                         </Info>
 
