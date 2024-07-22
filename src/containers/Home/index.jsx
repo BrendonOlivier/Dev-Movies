@@ -1,22 +1,33 @@
+import { useState, useEffect } from 'react'
 import api from "../../services/api"
 import { Background } from './styles'
 
 
 function Home() {
+    const [movie, setMovie] = useState();
 
-    async function getMovies() {
-        const data = await api.get('/movie/popular')
+    useEffect(() => {
+        async function getMovies() {
+            const { data: { results } } = await api.get('/movie/popular')
 
-        console.log(data)
-    }
 
-    getMovies()
+            console.log(results)
+            setMovie(results[7])
+        }
+
+        getMovies();
+    }, [])
+
 
     return (
-        <Background img=''>
-            <h1>Home</h1>
-            <p>Meu site de filmes</p>
-        </Background>
+        <>
+            {movie && ( // (funciona como if no react) se existir algum filme, mostro as informações :
+                <Background img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
+                    <h1>{movie.title}</h1>
+                    <p>{movie.overview}</p>
+                </Background>
+            )}
+        </>
     )
 }
 
