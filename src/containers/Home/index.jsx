@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import api from "../../services/api"
-import { Background } from './styles'
+import { Background, Info, Poster, Container, ContainerButtons } from './styles'
+import Button from '../../components/Button';
 
 
 function Home() {
@@ -12,7 +13,7 @@ function Home() {
 
 
             console.log(results)
-            setMovie(results[7])
+            setMovie(results[6])
         }
 
         getMovies();
@@ -23,8 +24,22 @@ function Home() {
         <>
             {movie && ( // (funciona como if no react) se existir algum filme, mostro as informações :
                 <Background img={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}>
-                    <h1>{movie.title}</h1>
-                    <p>{movie.overview}</p>
+
+                    <Container>
+                        <Info>
+                            <h1>{movie.title}</h1>
+                            <p>{movie.overview}</p>
+                            <ContainerButtons>
+                                <Button red>Assista Agora</Button>
+                                <Button>Assista o Trailer</Button>
+                            </ContainerButtons>
+                        </Info>
+
+                        <Poster>
+                            <img src={`https://image.tmdb.org/t/p/original${movie.poster_path}`} alt="capa-do-filme" />
+                        </Poster>
+                    </Container>
+
                 </Background>
             )}
         </>
