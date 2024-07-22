@@ -36,7 +36,7 @@ export async function getTopPeoples() {
 }
 
 // Buscando o filme pelo ID
-export async function getMovie(movieId) {
+export async function getMovieVideos(movieId) {
     const { data: { results } } = await api.get(`/movie/${movieId}/videos`)
 
     return results[1]
