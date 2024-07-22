@@ -4,6 +4,7 @@ import Home from '../containers/Home'
 import Movie from '../containers/Movies'
 import Series from '../containers/Series'
 import DefaultLayout from '../layout/DefaultLayout'
+import Detail from '../containers/Detail'
 
 function Router() {
 
@@ -13,6 +14,7 @@ function Router() {
                 <Route path='/' element={<Home />} />
                 <Route path='/filmes' element={<Movie />} />
                 <Route path='/series' element={<Series />} />
+                <Route path='/detalhe/:id' element={<Detail />} />
             </Route>
         </Routes>
     )
