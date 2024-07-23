@@ -4,7 +4,7 @@ import api from './api';
 export async function getMovies() {
     const { data: { results } } = await api.get('/movie/popular')
 
-    return results[0]
+    return results[1]
 }
 
 // Busca os Top Filmes do momento
@@ -39,5 +39,5 @@ export async function getTopPeoples() {
 export async function getMovieVideos(movieId) {
     const { data: { results } } = await api.get(`/movie/${movieId}/videos`)
 
-    return results[1]
+    return results
 }
