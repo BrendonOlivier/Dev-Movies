@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components";
 
 const buttonStyles = css`
-     border: 3px solid #fff;
+    border: 3px solid #fff;
     background-color: transparent;
     color: #fff;
     border-radius: 30px;
@@ -11,8 +11,14 @@ const buttonStyles = css`
     font-weight: 700;
 
     &:hover {
-        background-color: #fff;
+        background: #ffffff;
         color: #ff0000;
+    }
+
+    @media (max-width: 430px) {
+        font-size: 16px;
+        padding-bottom: 8px;
+        padding: 10px 10px;
     }
 `
 

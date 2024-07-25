@@ -2,7 +2,6 @@
 
 import { Container } from "./styles"
 
-
 function SpanGenres({ genres }) {
 
     return (

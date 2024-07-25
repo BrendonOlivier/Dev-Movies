@@ -1,9 +1,11 @@
 import { useState } from 'react';
-import Logo from '../../assets/logo.png'
-import { Container, Menu, Li } from './styles'
 import { Link, useLocation } from 'react-router-dom'
 
-// com o 'useLocation' vou saber em que página eu estou, para personalizar os Links do meu Header
+import Logo from '../../assets/logo.png'
+import { Container, Menu, Li } from './styles'
+
+
+// com o 'useLocation' vou saber em que página eu estou, para personalizar os Links do meu Header   
 // pego o 'pathname' e passo pra saber se e o link está ativo
 function Header() {
     const [changeBackground, setChangeBackground] = useState(false);
@@ -23,7 +25,7 @@ function Header() {
             <img src={Logo} alt="logo-dev-movie" />
             <Menu>
                 <Li isActive={pathname === '/'}>
-                    <Link to="/">Home</Link>
+                    <Link to="/">Início</Link>
                 </Li>
                 <Li isActive={pathname.includes('filmes')}>
                     <Link to="/filmes">Filmes</Link>

@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Background, Info, Poster, Container, ContainerButtons } from './styles'
 import Button from '../../components/Button';
 import Slider from '../../components/Slider';
-import { getImages } from '../../utils/getImagens';
 import Modal from '../../components/Modal';
-import { getMovies, getSeries, getTopMovies, getTopPeoples, getTopSeries } from '../../services/getData';
 
+import { getImages } from '../../utils/getImagens';
+import { Background, Info, Poster, Container, ContainerButtons } from './styles'
+import { getMovies, getSeries, getTopMovies, getTopPeoples, getTopSeries } from '../../services/getData';
 
 function Home() {
     const [showModal, setShowModal] = useState(false);
@@ -17,10 +17,7 @@ function Home() {
     const [popularSeries, setPopularSeries] = useState();
     const [topPeople, setTopPeople] = useState();
     const navigate = useNavigate();
-
-
     useEffect(() => {
-
         async function getAllData() {
             Promise.all([
                 getMovies(),
@@ -42,11 +39,10 @@ function Home() {
         getAllData();
     }, [])
 
-
     return (
         <>
             {movie && ( // (funciona como if no react) se existir algum filme, mostro as informações :
-                <Background img={getImages(movie.backdrop_path)}>
+                <Background img={`${getImages(movie.backdrop_path)}`}>
                     {showModal && <Modal movieId={movie.id} setShowModal={setShowModal} />}
 
                     <Container>
@@ -67,10 +63,10 @@ function Home() {
                 </Background>
             )}
 
-            {topMovies && <Slider info={topMovies} title={'Top Filmes'} />}
-            {topSeries && <Slider info={topSeries} title={'Top Séries'} />}
-            {popularSeries && <Slider info={popularSeries} title={'Séries Populares'} />}
-            {topPeople && <Slider info={topPeople} title={'Atores Populares'} />}
+            {topMovies && <Slider info={topMovies} title={'Top Filmes'} route={`/detalhe/`} />}
+            {topSeries && <Slider info={topSeries} title={'Top Séries'} route={`/detalhe-series/`} />}
+            {popularSeries && <Slider info={popularSeries} title={'Séries Populares'} route={`/detalhe-series/`} />}
+            {topPeople && <Slider info={topPeople} title={'Atores Populares'} route={false} />}
         </>
     )
 }

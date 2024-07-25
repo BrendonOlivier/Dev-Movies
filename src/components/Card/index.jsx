@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { useNavigate } from 'react-router-dom';
 
 import { getImages } from "../../utils/getImagens"
 import { Container } from "./styles"
@@ -7,11 +8,12 @@ import { Container } from "./styles"
 // Caso não existir o 'poster_path' no caso de Artistas, a dou uma segunda opção que é o 'profile_path'
 // Ou se não existir, deixo vazio pra não quebrar o código
 // E a mesma coisas pro titulo...
-function Card({ item }) {
+function Card({ item, route  }) {
+    const navigate = useNavigate();
 
     return (
-    <Container>
-        <img src={getImages(item.poster_path || item.profile_path || '')} alt="" />
+    <Container onClick={() => navigate(route + item.id)}>
+        <img src={getImages(item.poster_path || item.profile_path || '')} />
         <h3>{item.title || item.name || ''}</h3>
     </Container>
     )

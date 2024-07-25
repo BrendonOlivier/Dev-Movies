@@ -6,6 +6,7 @@ import { useParams } from 'react-router-dom'
 import { Background, Container, Cover, Info, ContainerMovies } from "./styles"
 import { getMovieById, getMovieCredits, getMovieSimilar, getMovieVideos } from "../../services/getDetails"
 import { getImages } from "../../utils/getImagens"
+
 import SpanGenres from "../../components/SpanGenres"
 import Credits from "../../components/Credits"
 import Slider from '../../components/Slider'
@@ -19,7 +20,6 @@ function Detail() {
     const [moveSimilar, setMovieSimilar] = useState()
 
     useEffect(() => {
-
         async function getAllData() {
             Promise.all([
                 getMovieById(id),
@@ -34,10 +34,12 @@ function Detail() {
                     setMovieSimilar(similar)
                 })
                 .catch(error => console.error(error))
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         getAllData();
-    }, [])
+    }, [id])
 
     return (
         <>
@@ -46,7 +48,7 @@ function Detail() {
                     <Background image={getImages(movie.backdrop_path)} />
                     <Container>
                         <Cover>
-                            <img src={getImages(movie.poster_path)} alt="" />
+                            <img src={getImages(movie.poster_path)} />
                         </Cover>
                         <Info>
                             <h2>{movie.title}</h2>
@@ -59,21 +61,21 @@ function Detail() {
                     </Container>
 
                     <ContainerMovies>
-                        {movieVideos && movieVideos.map(video => (
+                        {movieVideos && movieVideos.map((video) => (
                             <div key={video.id}>
                                 <h4>{video.name}</h4>
                                 <iframe
                                     src={`https://www.youtube.com/embed/${video.key}`}
                                     title="Youtube Video Player"
                                     height="500px"
-                                    width="100%"
+                                    width="90%"
                                 >
                                 </iframe>
                             </div>
                         ))}
                     </ContainerMovies>
 
-                    {moveSimilar && <Slider info={moveSimilar} title={'Similares'} />}
+                    {moveSimilar && <Slider info={moveSimilar} title={'Filmes Similares'} route={`/detalhe/`} />}
                 </>
             )}
         </>

@@ -11,5 +11,3 @@ const api = axios.create({
 })
 
 export default api
-
-// 5381b5bbdf2ee45f98929e863e57a893

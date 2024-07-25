@@ -2,42 +2,68 @@ import api from './api';
 
 // Buscando um filme Popular pela posição desejada
 export async function getMovies() {
-    const { data: { results } } = await api.get('/movie/popular')
+    try {
+        const { data: { results } } = await api.get('/movie/popular')
+        console.log(results)
 
-    return results[1]
+        // Gera um número aleatório entre 0 e 18 (inclusive)  
+        const randomIndex = Math.floor(Math.random() * 19); // 0 a 18 
+        return results[randomIndex] // Retorna um filme aleatório  
+    } catch (error) {
+        console.error('Rota: "movie/popular" - Erro ao buscar os filmes: ', error);
+    }
 }
 
 // Busca os Top Filmes do momento
 export async function getTopMovies() {
-    const { data: { results } } = await api.get('/movie/top_rated')
+    try {
+        const { data: { results } } = await api.get('/movie/top_rated')
 
-    return results
+        return results
+    } catch (error) {
+        console.error('Rota: "movie/top_rated" - Erro ao buscar os filmes: ', error);
+    }
 }
 
 // Busca as Top Series do momento
 export async function getTopSeries() {
-    const { data: { results } } = await api.get('/tv/top_rated')
-
-    return results
+    try {
+        const { data: { results } } = await api.get('/tv/top_rated')
+        return results
+    } catch (error) {
+        console.error('Rota: "tv/top_rated" - Erro ao buscar as top series de tv: ', error);
+    }
 }
 
 // Busca as Series Populares de TV
 export async function getSeries() {
-    const { data: { results } } = await api.get('/tv/popular')
+    try {
+        const { data: { results } } = await api.get('/tv/popular')
 
-    return results
+        return results
+    } catch (error) {
+        console.error('Rota: "tv/popular" - Erro ao buscar as series populares: ', error);
+    }
 }
 
 // Buscando os top Artistas
 export async function getTopPeoples() {
-    const { data: { results } } = await api.get('/person/popular')
+    try {
+        const { data: { results } } = await api.get('/person/popular')
 
     return results
+    } catch (error) {
+        console.error('Rota: "person/popular" - Erro ao buscar os artistas populares: ', error);
+    }
 }
 
 // Buscando o filme pelo ID
 export async function getMovieVideos(movieId) {
-    const { data: { results } } = await api.get(`/movie/${movieId}/videos`)
+    try {
+        const { data: { results } } = await api.get(`/movie/${movieId}/videos`)
 
     return results
+    } catch (error) {
+        console.error('Rota: "movie/movieid/videos" - Erro ao buscar o trailer: ', error);
+    }
 }

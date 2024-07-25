@@ -16,7 +16,6 @@ const slideLeft = keyframes`
     100% {  
         transform: translateX(0); /* Termina fora da tela à direita */  
     }  
-
 `;
 
 
