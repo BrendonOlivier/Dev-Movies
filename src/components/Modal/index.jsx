@@ -23,7 +23,7 @@ function Modal({ movieId, setShowModal }) {
                 <Container>
                     <span>&times;</span>
                     <iframe
-                        src={`https://www.youtube.com/embed/${movie[1].key}`}
+                        src={`https://www.youtube.com/embed/${movie[1]?.key}`}
                         title="Youtube Video Player"
                         height="500px"
                         width="100%"
