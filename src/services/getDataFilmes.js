@@ -49,7 +49,6 @@ export async function getPreLaunch() {
     try {
         const { data: { results } } = await api.get('/movie/upcoming')
 
-        console.log(results)
         return results
     } catch (error) {
         console.error('Rota: "movie/now_playing" - Erro ao buscar os filmes em pré lançamento: ', error);

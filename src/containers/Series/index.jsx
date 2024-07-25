@@ -55,7 +55,7 @@ function Series() {
                             <h1>{series.name}</h1>
                             <p>{series.overview}</p>
                             <ContainerButtons>
-                                <Button red onClick={() => navigate(`/detalhe-serie/${series.id}`)}>Assista Agora</Button>
+                                <Button red onClick={() => navigate(`/detalhe-series/${series.id}`)}>Assista Agora</Button>
                                 <Button onClick={() => setShowModal(true)}>Assista o Trailer</Button>
                             </ContainerButtons>
                         </Info>

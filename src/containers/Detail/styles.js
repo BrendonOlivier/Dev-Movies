@@ -134,10 +134,6 @@ export const ContainerMovies = styled.div`
         width: 100%;
         height: 100%;
         margin: 30px 0;
-
-        @media (max-width: 430px) {
-            justify-content: center;
-        }
     }
 
     h4 {

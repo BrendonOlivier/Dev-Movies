@@ -29,5 +29,6 @@ export const Container = styled.div`
 
     @media (max-width: 430px) {
     flex-wrap: wrap;
+    justify-content: center;
   }
 `

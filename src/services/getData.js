@@ -4,8 +4,7 @@ import api from './api';
 export async function getMovies() {
     try {
         const { data: { results } } = await api.get('/movie/popular')
-        console.log(results)
-
+        
         // Gera um número aleatório entre 0 e 18 (inclusive)  
         const randomIndex = Math.floor(Math.random() * 19); // 0 a 18 
         return results[randomIndex] // Retorna um filme aleatório  

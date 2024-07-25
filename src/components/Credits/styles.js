@@ -40,7 +40,7 @@ export const Container = styled.div`
 
 div {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
 }
 
 p {

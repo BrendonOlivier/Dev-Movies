@@ -73,7 +73,6 @@ export async function getSerieVideos(serieId) {
   try {
     const { data: { results }} = await api.get(`tv/${serieId}/videos`);
 
-    console.log(results)
     return results;
   } catch (error) {
     console.error('Rota: "tv/:Id/videos" - Erro ao buscar os trailers: ', error);
